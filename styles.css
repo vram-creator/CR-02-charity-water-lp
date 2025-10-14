@@ -23,6 +23,16 @@ Fonts:
   This CSS uses the provided color palette and beginner-friendly styles.
 */
 
+/* Basic reset and simple, system-friendly font stack */
+* { box-sizing: border-box; }
+html,body { margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #12345a; /* deep blue text similar to the design */
+  background: #f7efe2; /* warm, light background */
+  line-height: 1.4;
+}
+
 /* Set up the main font and background color for the whole page */
 body {
   background-color: #f4f8fb; /* Soft light blue for a fresh look */
@@ -41,39 +51,92 @@ section {
   padding: 24px 16px;
 }
 
-/* Hero Section Styles */
+/* ========== HERO ========== */
 .hero {
-  position: relative; /* Needed for overlay */
-  /* Set a background image that covers the whole section */
-  background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80');
-  background-size: cover;      /* Make the image cover the whole area */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat;
-  color: #fff;                 /* White text for contrast */
-  text-align: center;          /* Center the text */
-  padding: 60px 20px;          /* Add space above and below */
-  border-radius: 0 0 16px 16px; /* Only round bottom corners */
-
-  /* Add a dark overlay for better text readability */
-  /* This uses a simple linear-gradient overlay */
-  background-blend-mode: darken;
-  background-color: rgba(46, 157, 247, 0.45); /* Blue overlay */
+  /* Background image for hero — replace URL later with your own art */
+  background-image: url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=1400&q=80&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  height: 62vh; /* large hero height */
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
-/* Make the headline bold and modern */
-.hero h1 {
-  font-size: 2.5em;
-  font-weight: bold;
+/* A slightly dark overlay to make white text readable */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.35);
+}
+
+/* Container for hero text so it lays above the overlay */
+.hero-overlay {
+  position: relative;
+  text-align: center;
+  color: #fff;
+  padding: 20px;
+  max-width: 1100px;
+}
+
+/* Small eyebrow */
+.eyebrow {
+  letter-spacing: 4px;
+  font-size: 0.75rem;
+  margin: 0 0 8px 0;
+  opacity: 0.9;
+}
+
+/* Large responsive title */
+.site-title {
+  margin: 0;
+  font-weight: 800;
+  /* clamp keeps font size reasonable on all screens */
+  font-size: clamp(36px, 8vw, 88px);
+  line-height: 0.95;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.45);
+}
+
+/* Supporting line below title */
+.hero-sub {
+  margin: 18px 0;
+  font-size: 1.125rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 3px;
+  font-weight: 700;
   letter-spacing: 1px;
-  margin-bottom: 15px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.15); /* Soft shadow for readability */
 }
 
-/* Style the subheadline */
-.hero p {
-  font-size: 1.2em;
-  margin-top: 0;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.12);
+/* Primary white button used on the hero */
+.btn-primary {
+  background: #ffffff;
+  color: #12345a;
+  border: 2px solid rgba(255,255,255,0.9);
+  margin-top: 8px;
+}
+
+/* Secondary button for donate row */
+.btn-secondary {
+  background: #12345a;
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 2px;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  border: none;
 }
 
 /* Story Section Styles */
@@ -136,6 +199,87 @@ section {
   margin-bottom: 20px;
 }
 
+/* ========== ABOUT SECTION ========== */
+/* Two-column layout using flexbox (beginner-friendly) */
+.about {
+  display: flex;
+  gap: 40px;
+  padding: 48px 32px;
+  max-width: 1100px;
+  margin: -40px auto 0; /* negative margin to pull section up under hero */
+  align-items: flex-start;
+}
+
+/* Left text column */
+.about-text {
+  flex: 1;
+  padding-right: 10px;
+}
+
+/* Big headline in the design */
+.lead-head {
+  color: #083654; /* slightly darker for good contrast */
+  font-size: 1.75rem;
+  margin: 0 0 16px 0;
+}
+
+/* Paragraph below headline */
+.lead-copy {
+  color: #12345a;
+  opacity: 0.9;
+  margin-bottom: 24px;
+}
+
+/* Simple brand mark */
+.brand {
+  font-weight: 600;
+  color: #12345a;
+  letter-spacing: 1px;
+}
+
+/* Right image column */
+.about-images {
+  width: 420px; /* fixed width so images overlap predictably */
+  position: relative;
+}
+
+/* Top image (sits above) */
+.img-top img {
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
+/* Bottom image (overlaps and is slightly lower) */
+.img-bottom {
+  position: absolute;
+  right: -10px;
+  bottom: -40px;
+  width: 70%;
+}
+.img-bottom img {
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
+/* Donate CTA row */
+.donate-row {
+  display: flex;
+  justify-content: center;
+  padding: 48px 16px;
+}
+
+/* Footer */
+.site-footer {
+  text-align: center;
+  padding: 24px 0 48px 0;
+  color: #12345a;
+  opacity: 0.85;
+}
+
 /* 
   Media Queries for Responsive Design
   Media queries help make your website look good on different screen sizes,
@@ -195,4 +339,23 @@ section {
   .impact-image {
     width: 300px;
   }
+}
+
+/* ========== RESPONSIVE ========== */
+/* Stack columns on smaller screens — keep it simple */
+@media (max-width: 900px) {
+  .about {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 12px;
+  }
+  .about-images { width: 90%; order: 2; margin-top: 24px; }
+  .img-bottom { position: relative; right: 0; bottom: -18px; width: 80%; margin: 0 auto; }
+  .lead-head { font-size: 1.35rem; }
+}
+
+/* Small screens - reduce hero title a bit */
+@media (max-width: 480px) {
+  .site-title { font-size: 36px; }
+  .hero { height: 56vh; min-height: 360px; }
 }
