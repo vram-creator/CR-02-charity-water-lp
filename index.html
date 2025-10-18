@@ -4,24 +4,26 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Charity: Water — Landing</title>
+
+  <!-- Add a simple, readable Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <!-- Link to the stylesheet we will create -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <!-- Hero/header section with big background image -->
-  <!-- saved group photo as assets/cover-group.jpg -->
-  <header class="hero" style="background-image: url('https://d35lvrk9fb4ftj.cloudfront.net/eyJidWNrZXQiOiJkcm9wbWFyayIsImtleSI6IjUyMDQzL2Q4ZjhkODk1OGIwNzRkZDRlZjY0OGI1OWQ2MjBiNzU5YjgxMjMxNTRmNTk0MGEzMWMwNTAxMzkzMjc0NjVlYzcvcHJldmlldy9aaW1iYWJ3ZV8yMDIyX0NHLTk4MjIuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo2MDAsImhlaWdodCI6NjAwLCJmaXQiOiJpbnNpZGUiLCJ3aXRob3V0RW5sYXJnZW1lbnQiOnRydWV9fX0='); background-size: cover; background-position: center;">
-    <div class="hero-overlay">
-      <!-- Small "eyebrow" text above the main title -->
-      <p class="eyebrow">WELCOME TO</p>
+  <header class="hero">
+    <!-- Top headline near the top of the hero -->
+    <div class="hero-top">
+      <h1 class="site-title">Welcome to The Charity: Water</h1>
+    </div>
 
-      <!-- Large title -->
-      <h1 class="site-title">The Charity: Water</h1>
-
-      <!-- Supporting line -->
+    <!-- Bottom area near the bottom of the hero: subtext + CTA -->
+    <div class="hero-bottom">
       <p class="hero-sub">Join the generation proving generosity works.</p>
-
-      <!-- Primary CTA -->
       <a class="btn btn-primary" href="#about">LEARN MORE</a>
     </div>
   </header>
@@ -49,19 +51,19 @@
       <div class="about-images">
         <!-- Top (taller) image -->
         <div class="img-top">
-          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1000&q=80&auto=format&fit=crop" alt="Community group" />
+          <img src="https://image2url.com/images/1760761402203-7f5f033d-ff80-420d-86a2-d06bcb60e0a0.jpg" alt="Community group" />
         </div>
 
         <!-- Bottom (wider) image overlapping the top image -->
         <div class="img-bottom">
-          <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=1000&q=80&auto=format&fit=crop" alt="Pouring water into a container" />
+          <img src="https://image2url.com/images/1760761239088-4e27f3c5-6f8b-4d2f-8c73-3ee42ce205db.jpg" alt="Pouring water into a container" />
         </div>
       </div>
     </section>
 
     <!-- Simple centered donate CTA -->
     <section class="donate-row">
-      <a class="btn btn-secondary" id="donate" href="#donate">DONATE NOW</a>
+      <a class="btn btn-secondary" id="donate" href="donate.html">DONATE NOW</a>
     </section>
 
     <!-- Footer -->
@@ -69,5 +71,12 @@
       <p>© charity: water</p>
     </footer>
   </main>
+  
+  <!-- Brand logo in bottom left corner -->
+  <img 
+    class="brand-logo"
+    src="https://image2url.com/images/1760760573840-eb231d68-37d4-484f-9dd7-5ca26ff2c26e.png"
+    alt="Charity Water brand logo"
+  />
 </body>
 </html>

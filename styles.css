@@ -23,6 +23,50 @@ Fonts:
   This CSS uses the provided color palette and beginner-friendly styles.
 */
 
+/* Add local font-face declarations for Proxima Nova and Avenir.
+   IMPORTANT: You must copy licensed font files into:
+   /workspaces/CR-02-charity-water-lp/assets/fonts/
+   Example filenames (recommended):
+     ProximaNova-Regular.woff2
+     ProximaNova-Bold.woff2
+     Avenir-Book.woff2
+     Avenir-Heavy.woff2
+*/
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('assets/fonts/ProximaNova-Regular.woff2') format('woff2'),
+       url('assets/fonts/ProximaNova-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('assets/fonts/ProximaNova-Bold.woff2') format('woff2'),
+       url('assets/fonts/ProximaNova-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('assets/fonts/Avenir-Book.woff2') format('woff2'),
+       url('assets/fonts/Avenir-Book.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Avenir';
+  src: url('assets/fonts/Avenir-Heavy.woff2') format('woff2'),
+       url('assets/fonts/Avenir-Heavy.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Basic reset and simple, system-friendly font stack */
 * { box-sizing: border-box; }
 html,body { margin: 0; padding: 0; }
@@ -53,238 +97,299 @@ section {
 
 /* ========== HERO ========== */
 .hero {
-  /* Background image for hero — replace URL later with your own art */
-  background-image: url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=1400&q=80&auto=format&fit=crop');
-  background-size: cover;
-  background-position: center;
-  height: 62vh; /* large hero height */
-  min-height: 420px;
+  /* Use the external high-resolution image provided */
+  background-image: url('https://image2url.com/images/1760752000052-ebe95824-d337-4ebf-9c06-a3afae83011f.jpg');
+  background-size: cover;       /* fill area */
+  background-position: center;  /* center the focal point */
+  background-repeat: no-repeat; /* avoid tiling */
+
+  min-height: 78vh; /* tall hero, not full 100vh so footer shows on small screens */
   display: flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
 }
 
-/* A slightly dark overlay to make white text readable */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(10, 10, 10, 0.35);
-}
-
-/* Container for hero text so it lays above the overlay */
+/* Move overlay to the top and make it transparent (no white box) */
 .hero-overlay {
-  position: relative;
+  position: absolute;
+  top: 32px;                      /* place overlay near the top */
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px);
+  max-width: 920px;
+  padding: 12px 20px;             /* small padding so text breathes */
+  background: transparent;        /* remove white box */
   text-align: center;
-  color: #fff;
-  padding: 20px;
-  max-width: 1100px;
+  border-radius: 0;               /* no rounded card look */
+  box-shadow: none;               /* remove shadow */
 }
 
-/* Small eyebrow */
-.eyebrow {
-  letter-spacing: 4px;
-  font-size: 0.75rem;
-  margin: 0 0 8px 0;
-  opacity: 0.9;
-}
+/* Top headline container: place almost at the top */
+.hero-top {
+  position: absolute;
+  top: 18px;                         /* move a bit closer to top */
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 48px);
+  max-width: 720px;                  /* narrower block */
+  text-align: center;
+  pointer-events: none;
 
-/* Large responsive title */
-.site-title {
+  /* Smaller, more transparent block so image shows through more */
+  background: rgba(255,255,255,0.55);
+  padding: 6px 10px;                 /* reduced padding */
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+.hero-top .site-title {
   margin: 0;
-  font-weight: 800;
-  /* clamp keeps font size reasonable on all screens */
-  font-size: clamp(36px, 8vw, 88px);
-  line-height: 0.95;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.45);
+  font-size: 40px;                   /* slightly reduced on desktop */
+  font-weight: 700;
+  color: #00a6a8;                    /* blue from before */
+  pointer-events: auto;
 }
 
-/* Supporting line below title */
+/* Bottom container: smaller translucent block and spacing */
+.hero-bottom {
+  position: absolute;
+  bottom: 24px;                      /* closer to bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 48px);
+  max-width: 720px;                  /* match top block width */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+
+  background: rgba(255,255,255,0.55);
+  padding: 8px 12px;                 /* reduced padding */
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+/* Use the requested blue for the subtext and CTA */
+.hero-bottom .hero-sub {
+  margin: 0;
+  color: #00a6a8;
+  font-size: 30px; 
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.hero-bottom .btn-primary {
+  background: transparent;
+  color: #00787b#;
+  border: 2px solid #00787b;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  transition: background 0.2s ease;
+}
+.hero-bottom .btn-primary:hover {
+  background: #00787b;
+  color: #fff;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Eyebrow text above the main title */
+.eyebrow {
+  letter-spacing: 2px;
+  font-weight: 600;
+  font-size: 12px;
+  color: #00787b; /* a teal accent */
+  margin: 0 0 8px 0;
+}
+
+/* The main site title — large and bold */
+.site-title {
+  margin: 6px 0 8px 0;
+  font-size: 44px; /* large headline for desktop */
+  font-weight: 700;
+  color: #073b3c;
+}
+
+/* Short supporting sentence under headline */
 .hero-sub {
-  margin: 18px 0;
-  font-size: 1.125rem;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 0 20px 0;
+  font-size: 16px;
+  color: #18494a;
 }
 
-/* Buttons */
+/* --- BUTTONS --- */
+/* Simple button base */
 .btn {
   display: inline-block;
   text-decoration: none;
-  padding: 10px 18px;
-  border-radius: 3px;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-/* Primary white button used on the hero */
-.btn-primary {
-  background: #ffffff;
-  color: #12345a;
-  border: 2px solid rgba(255,255,255,0.9);
-  margin-top: 8px;
-}
-
-/* Secondary button for donate row */
-.btn-secondary {
-  background: #12345a;
-  color: #fff;
-  padding: 12px 28px;
-  border-radius: 2px;
-  display: inline-block;
-  text-transform: uppercase;
-  font-size: 0.9rem;
-  border: none;
-}
-
-/* Story Section Styles */
-.story {
-  background-color: #8BD1CB; /* Secondary Light Blue */
-  color: #222;
-  text-align: center;
-  padding: 30px 20px;
-}
-
-/* Add accent color to section headings */
-h2 {
-  color: #2E9DF7; /* Primary blue */
-  margin-top: 0;
-  font-weight: bold;
-}
-
-/* Call-to-Action Section Styles */
-.call-to-action {
-  background-color: #FFC907; /* Primary Yellow */
-  color: #222;
-  text-align: center;
-  padding: 30px 20px;
-}
-
-/* Style the impact story image */
-.impact-image {
-  width: 100%;
-  max-width: 320px;
-  border-radius: 10px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 8px rgba(46, 157, 247, 0.10);
-}
-
-/* Donate Button Styles */
-.donate-button {
-  display: inline-block;
-  background-color: #4FCB53; /* Green */
-  color: #fff;
-  padding: 14px 32px;
-  text-decoration: none;
+  padding: 12px 20px;
   border-radius: 6px;
-  font-weight: bold;
-  font-size: 1.1em;
-  margin-top: 18px;
-  box-shadow: 0 2px 8px rgba(79, 203, 83, 0.10);
-  transition: background 0.3s, transform 0.2s;
-  border: none;
+  font-weight: 600;
   cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease;
 }
 
-/* Change button color when hovered */
-.donate-button:hover {
-  background-color: #159A48; /* Dark Green */
-  transform: translateY(-2px) scale(1.04); /* Slight lift */
+/* Primary CTA */
+.btn-primary {
+  background: #00a6a8; /* bright teal */
+  color: white;
+  border: none;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 166, 168, 0.18);
 }
 
-/* Add some spacing between sections */
-section {
-  margin-bottom: 20px;
+/* Secondary CTA (used in donate row) */
+.btn-secondary {
+  background: transparent;
+  color: #00a6a8;
+  border: 2px solid #00a6a8;
+}
+.btn-secondary:hover {
+  background: #00a6a8;
+  color: #fff;
 }
 
-/* ========== ABOUT SECTION ========== */
-/* Two-column layout using flexbox (beginner-friendly) */
+/* --- ABOUT SECTION --- */
+/* Two-column layout using flexbox */
 .about {
   display: flex;
-  gap: 40px;
-  padding: 48px 32px;
-  max-width: 1100px;
-  margin: -40px auto 0; /* negative margin to pull section up under hero */
+  gap: 32px;
   align-items: flex-start;
+  padding: 56px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-/* Left text column */
+/* Left column: text */
 .about-text {
-  flex: 1;
-  padding-right: 10px;
+  flex: 1 1 50%;
 }
 
-/* Big headline in the design */
+/* Lead headline styling */
 .lead-head {
-  color: #083654; /* slightly darker for good contrast */
-  font-size: 1.75rem;
-  margin: 0 0 16px 0;
-}
-
-/* Paragraph below headline */
-.lead-copy {
-  color: #12345a;
-  opacity: 0.9;
-  margin-bottom: 24px;
-}
-
-/* Simple brand mark */
-.brand {
+  margin-top: 0;
+  font-size: 22px;
   font-weight: 600;
-  color: #12345a;
-  letter-spacing: 1px;
+  color: #2E9DF7; /* Blue headline */
 }
 
-/* Right image column */
-.about-images {
-  width: 420px; /* fixed width so images overlap predictably */
-  position: relative;
+/* Small paragraph */
+.lead-copy {
+  color: #159A48; /* Dark Green */
+  margin: 12px 0 20px 0;
 }
 
-/* Top image (sits above) */
-.img-top img {
-  width: 100%;
-  display: block;
+/* Simple brand block */
+.brand {
+  display: inline-block;
+  background: #f7f9f9;
+  padding: 8px 12px;
   border-radius: 4px;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+  color: #00787b;
+  font-weight: 600;
 }
 
-/* Bottom image (overlaps and is slightly lower) */
+/* Right column: image stack container */
+.about-images {
+  flex: 1 1 50%;
+  position: relative;
+  min-height: 260px; /* reserve vertical space for overlapping images */
+}
+
+/* Top (taller) image */
+.img-top img,
+.img-bottom img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(11, 43, 45, 0.08);
+}
+
+/* Position the images so they overlap slightly */
+.img-top {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%; /* smaller width so it doesn't go past the bottom image */
+  max-width: 200px; /* optional: set a max width for extra control */
+}
 .img-bottom {
   position: absolute;
-  right: -10px;
-  bottom: -40px;
-  width: 70%;
-}
-.img-bottom img {
-  width: 100%;
-  display: block;
-  border-radius: 4px;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+  bottom: 0;
+  left: 0;
+  width: 60%;
+  transform: translateY(12%);
 }
 
-/* Donate CTA row */
+/* --- DONATE ROW --- */
 .donate-row {
-  display: flex;
-  justify-content: center;
-  padding: 48px 16px;
+  text-align: center;
+  padding: 40px 20px;
 }
 
-/* Footer */
+/* --- FOOTER --- */
 .site-footer {
   text-align: center;
-  padding: 24px 0 48px 0;
-  color: #12345a;
-  opacity: 0.85;
+  padding: 28px 20px;
+  color: #567777;
+  background: #f7f9f9;
 }
 
-/* 
-  Media Queries for Responsive Design
-  Media queries help make your website look good on different screen sizes,
-  like phones (small screens) and computers (large screens).
-*/
+/* Brand logo positioning in bottom left corner */
+.brand-logo {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  width: 180px; /* increased size for better visibility */
+  height: auto;
+  z-index: 1000; /* ensure it stays on top */
+  opacity: 1; /* fully visible */
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); /* subtle shadow */
+}
+
+/* Adjust logo size for mobile screens */
+@media (max-width: 600px) {
+  .brand-logo {
+    width: 120px; /* proportionally larger on mobile too */
+    left: 16px;
+    bottom: 16px;
+  }
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+/* Stack columns on small screens */
+@media (max-width: 800px) {
+  .site-title {
+    font-size: 32px;
+  }
+  .about {
+    flex-direction: column;
+  }
+  .about-images {
+    position: relative;
+    min-height: 220px;
+    margin-top: 20px;
+  }
+  .img-top, .img-bottom {
+    position: relative;
+    width: 100%;
+    transform: none;
+  }
+
+  /* Keep the overlay near the bottom but with smaller gap and padding */
+  .hero-overlay {
+    top: 14px;
+    width: calc(100% - 24px);
+    padding: 10px 12px;
+  }
+
+  .hero-top { top: 14px; }
+  .hero-top .site-title { font-size: 32px; }
+  .hero-bottom { bottom: 18px; width: calc(100% - 24px); }
+  .hero-bottom .hero-sub { font-size: 14px; }
+}
 
 /* This media query applies styles when the screen is 600px wide or less (like on most phones) */
 @media (max-width: 600px) {
@@ -292,6 +397,12 @@ section {
   .hero {
     padding: 32px 8px;
     font-size: 1em;
+  }
+
+  /* Place the overlay a bit higher on very small screens to avoid overlap with controls */
+  .hero-overlay {
+    top: 12px;
+    padding: 14px;
   }
 
   /* Make headline font size smaller so it fits on small screens */
@@ -359,3 +470,10 @@ section {
   .site-title { font-size: 36px; }
   .hero { height: 56vh; min-height: 360px; }
 }
+
+/* Specific adjustments for the landing page only */
+body.landing-page {
+  /* ...existing styles... */
+}
+
+/* End of charity: water Landing Page Styles */
