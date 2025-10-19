@@ -108,6 +108,33 @@ section {
   position: relative;
 }
 
+.hero-donate {
+  background-image: url("https://image2url.com/images/1760810628529-998b3200-6981-4703-892b-9727d95bd8bb.jpg");
+  background-size: cover;
+  background-position: center 20%; /* moves image down slightly */
+}
+
+.hero-about {
+  background-image: url("https://image2url.com/images/1760816208184-900dadb4-3e18-4303-97c4-7ef4d25753b9.jpg");
+  background-size: cover;
+  background-position: center 20%; /* moves image down slightly */
+}
+
+.hero-thankyou {
+  background-image: url("https://image2url.com/images/1760833461013-940972a2-82d0-4c34-aaa5-3d9f0ef1e260.jpg");
+  background-size: contain;       /* makes the entire image visible */
+  background-repeat: no-repeat;   /* prevents tiling */
+  background-position: center;    /* keeps it centered */
+  background-color: #000;         /* fills gaps with a neutral color */
+  min-height: 100vh;              /* fills the full screen height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
 /* Move overlay to the top and make it transparent (no white box) */
 .hero-overlay {
   position: absolute;
